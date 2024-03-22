@@ -7,7 +7,19 @@ public record CreateProductCommand(string Name,
     decimal Price) : ICommand<CreateProductResult>;
 public record CreateProductResult(Guid Id);
 
-internal class CreateProductCommandHandler (IDocumentSession session): ICommandHandler<CreateProductCommand, CreateProductResult>
+public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+{
+    public CreateProductCommandValidator()
+    {
+        RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
+        RuleFor(x => x.Category).NotEmpty().WithMessage("Category is required");
+        RuleFor(x => x.ImageFile).NotEmpty().WithMessage("ImageFile is required");
+        RuleFor(x => x.Price).GreaterThan(0).NotEmpty().WithMessage("Price must be greater than 0");
+    }
+}
+
+internal class CreateProductCommandHandler (IDocumentSession session, ILogger<CreateProductCommandHandler> logger)
+    : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
     public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
@@ -15,6 +27,8 @@ internal class CreateProductCommandHandler (IDocumentSession session): ICommandH
         // Create product entity
         // Save to database
         // return CreateProductResult
+
+        logger.LogInformation("CreateProductHandler called with command {@command}", command);
 
         var product = new Product
         {
