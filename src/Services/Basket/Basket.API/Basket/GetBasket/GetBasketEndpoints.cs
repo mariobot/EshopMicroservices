@@ -2,15 +2,15 @@
 
 //public record GetBasketRequest(string UserName);
 
-public record GetBasketResponse(ShopingCart Cart);
+public record GetBasketResponse(ShoppingCart Cart);
 
 public class GetBasketEndpoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/basket/{usename}", async (string userNaqme, ISender sender) =>
+        app.MapGet("/basket/{UserName}", async (string UserName, ISender sender) =>
         {
-            var result = await sender.Send(new GetBasketQuery(userNaqme));
+            var result = await sender.Send(new GetBasketQuery(UserName));
 
             var response = result.Adapt<GetBasketResponse>();
 

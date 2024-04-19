@@ -1,6 +1,6 @@
 ﻿namespace Basket.API.Basket.StoreBasket;
 
-public record StoreBasketRequest(ShopingCart Cart);
+public record StoreBasketRequest(ShoppingCart Cart);
 
 public record StoreBasketResponse(string UserName);
 

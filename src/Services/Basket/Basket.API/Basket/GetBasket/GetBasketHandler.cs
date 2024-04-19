@@ -2,13 +2,13 @@
 
 public record GetBasketQuery(string UserName) : IQuery<GetBasketResult>;
 
-public record GetBasketResult(ShopingCart Cart);
+public record GetBasketResult(ShoppingCart Cart);
 
 
 public class GetBasketQueryHandler : IQueryHandler<GetBasketQuery, GetBasketResult>
 {
     public async Task<GetBasketResult> Handle(GetBasketQuery query, CancellationToken cancellationToken)
     {
-        return new GetBasketResult(new ShopingCart("tmp"));
+        return new GetBasketResult(new ShoppingCart("tmp"));
     }
 }
