@@ -1,7 +1,4 @@
-﻿
-using Ordering.Domain.Abstractions;
-
-namespace Ordering.Domain.Models;
+﻿namespace Ordering.Domain.Models;
 
 public class OrderItem : Entity<Guid>
 {
@@ -11,6 +8,7 @@ public class OrderItem : Entity<Guid>
         ProductId = productId;
         Quantity = quantity;
         Price = price;
+        
     }
 
     public Guid OrderId { get; private set; } = default!;
