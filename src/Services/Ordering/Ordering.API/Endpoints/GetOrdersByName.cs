@@ -4,7 +4,7 @@ namespace Ordering.API.Endpoints;
 
 public record GetOrdersByNameRequest(string Name);
 
-public record GetOrdersByNameResponse(IEnumerable<OrderDto> Ordres);
+public record GetOrdersByNameResponse(IEnumerable<OrderDto> Orders);
 
 public class GetOrdersByName : ICarterModule
 {

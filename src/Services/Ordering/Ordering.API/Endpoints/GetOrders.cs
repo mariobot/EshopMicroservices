@@ -5,7 +5,7 @@ namespace Ordering.API.Endpoints;
 
 public record GetOrdersRequest(PaginationRequest PaginationRequest);
 
-public record GetOrdersResponse(PaginationResult<OrderDto> Orders);
+public record GetOrdersResponse(PaginatedResult<OrderDto> Orders);
 
 public class GetOrders : ICarterModule
 {

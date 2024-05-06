@@ -4,7 +4,7 @@ namespace Ordering.API.Endpoints;
 
 public record DeleteOrderRequest(Guid Id);
 
-public record DeleteOrderResponse(bool IsSuccess);
+public record DeleteOrderResponse(bool isSuccess);
 
 public class DeleteOrder : ICarterModule
 {
@@ -14,9 +14,7 @@ public class DeleteOrder : ICarterModule
         {
             var result = await sender.Send(new DeleteOrderCommand(Id));
 
-            var response = result.Adapt<DeleteOrderResponse>();
-
-            return Results.Ok(response);
+            return Results.Ok(new DeleteOrderResponse(result.isSuccess));
         })
         .WithName("DeleteOrder")
         .Produces<DeleteOrderResponse>(StatusCodes.Status200OK)

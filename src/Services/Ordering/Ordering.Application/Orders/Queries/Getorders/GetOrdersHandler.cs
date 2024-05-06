@@ -20,7 +20,7 @@ public class GetOrdersHandler(IApplicationDbContext dbContext)
                         .ToListAsync(cancellationToken);
 
         return new GetOrdersResult(
-            new PaginationResult<OrderDto>(
+            new PaginatedResult<OrderDto>(
                 pageIndex,
                 pageSize,
                 totalCount,
