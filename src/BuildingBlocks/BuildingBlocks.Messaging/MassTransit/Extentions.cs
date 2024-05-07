@@ -7,7 +7,7 @@ namespace BuildingBlocks.Messaging.MassTransit;
 
 public static class Extentions
 {
-    public static IServiceCollection AddMessageBroker(this IServiceCollection services, IConfiguration configuration, Assembly? assembly)
+    public static IServiceCollection AddMessageBroker(this IServiceCollection services, IConfiguration configuration, Assembly? assembly = null)
     {
         // Implement RabbitMQ MassTransit configuration
         services.AddMassTransit(config =>
