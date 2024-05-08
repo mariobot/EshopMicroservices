@@ -4,12 +4,20 @@ public class CreateOrderHandler(IApplicationDbContext dbContext) : ICommandHandl
 {
     public async Task<CreateOrderResult> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
     {
-        var order = CreateNewOrder(command.Order);
+        try
+        {
+            var order = CreateNewOrder(command.Order);
 
-        dbContext.Orders.Add(order);
-        await dbContext.SaveChangesAsync(cancellationToken);
+            dbContext.Orders.Add(order);
+            await dbContext.SaveChangesAsync(cancellationToken);
+            
+            return new CreateOrderResult(order.Id.Value);
 
-        return new CreateOrderResult(order.Id.Value);
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
     }
 
     private Order CreateNewOrder(OrderDto orderDto)
