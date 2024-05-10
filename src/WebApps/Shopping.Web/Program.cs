@@ -3,6 +3,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddRefitClient<ICatalogService>()
+    .ConfigureHttpClient(config =>
+    {
+        config.BaseAddress = new Uri(builder.Configuration["ApiSettings:GetawayAddress"]!);
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
