@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "58fd371c-ca9e-44db-ba68-848f178eb1ea",
+		"name": "EshopMicroservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "99540"
+	},
+	"item": [
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "CreateProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Product\",\r\n    \"Category\": [\"c1\",\"c2\"],\r\n    \"Description\": \"Description Product AA\",\r\n    \"ImageFile\" : \"Image\",\r\n    \"Price\": 199\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalog_url}}/products",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products?pageNumber=1&pageSize=5",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/018e5e63-b8f8-45cc-9a25-66ebc75a87d5",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"018e5e63-b8f8-45cc-9a25-66ebc75a87d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductsByCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/category/Smart Phone",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"Smart Phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"018e5e63-b8f8-45cc-9a25-66ebc75a87d5\",\r\n    \"name\": \"New Product 2\",\r\n    \"category\": [\r\n        \"c1\",\r\n        \"c2\",\r\n        \"c3\"\r\n    ],\r\n    \"description\": \"Description Product B\",\r\n    \"imageFile\": \"Image File B\",\r\n    \"price\": 299\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalog_url}}/products",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/products/018e6848-c651-4e5e-8f95-569079387ff5",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"products",
+								"018e6848-c651-4e5e-8f95-569079387ff5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalog_url}}/health",
+							"host": [
+								"{{catalog_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Basket",
+			"item": [
+				{
+					"name": "GetBasket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basket_url}}/basket/swn2",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"basket",
+								"swn2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBasket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{basket_url}}/basket/jackson",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"basket",
+								"jackson"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddBasket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Cart\":\r\n    {\r\n        \"UserName\": \"swn\",\r\n        \"Items\": [\r\n            {\r\n                \"Quantity\": 2,\r\n                \"Color\": \"Red\",\r\n                \"Price\": 500,\r\n                \"ProductId\": \"69bf74c7-efd5-4adc-a00b-2af19dd235fd\",\r\n                \"ProductName\": \"IPhone X\"\r\n            },\r\n            {\r\n                \"Quantity\": 1,\r\n                \"Color\": \"Green\",\r\n                \"Price\": 600,\r\n                \"ProductId\": \"56bf74c7-efd5-4adc-a00b-2af19dd235fd\",\r\n                \"ProductName\": \"Samsung 10\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basket_url}}/basket",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BasketCheckoutDto\" :\r\n    {\r\n        \"UserName\": \"swn\",\r\n        \"CustomerId\": \"189dc8dc-990f-48e0-a37b-e6f2b60b9d7d\",\r\n        \"TotalPrice\": 0,\r\n        \"FirstName\": \"swn\",\r\n        \"LastName\": \"swn\",\r\n        \"EmailAddress\": \"swn4contact@gmail.com\",\r\n        \"AddressLine\": \"Cr 5 66l 33\",\r\n        \"Country\": \"USA\",\r\n        \"State\": \"Texas\",\r\n        \"ZipCode\": \"45678\",\r\n        \"CardName\": \"swn\",\r\n        \"CardNumber\": \"4567-44567-4567\",\r\n        \"Expiration\": \"11/30\",\r\n        \"Cvv\": \"333\",\r\n        \"PaymentMethod\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basket_url}}/basket/checkout",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"basket",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basket_url}}/health",
+							"host": [
+								"{{basket_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discount",
+			"item": []
+		},
+		{
+			"name": "Ordering",
+			"item": [
+				{
+					"name": "CreateOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Order\":\r\n    {\r\n        \"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n        \"OrderName\": \"ORD_7\",\r\n        \"ShippingAddress\":\r\n        {\r\n            \"FirstName\": \"Valentina\",\r\n            \"LastName\": \"Gomez\",\r\n            \"EmailAddress\": \"valen@gmail.com\",\r\n            \"AddressLine\": \"St west 34\",\r\n            \"Country\": \"USA\",\r\n            \"State\": \"Texas\",\r\n            \"ZipCode\": \"45789\"\r\n        },\r\n        \"BillingAddress\":\r\n        {\r\n            \"FirstName\": \"Valentina\",\r\n            \"LastName\": \"Gomez\",\r\n            \"EmailAddress\": \"valen@gmail.com\",\r\n            \"AddressLine\": \"St west 34\",\r\n            \"Country\": \"USA\",\r\n            \"State\": \"Texas\",\r\n            \"ZipCode\": \"45789\"\r\n        },\r\n        \"Payment\" : \r\n        {\r\n            \"CardName\" : \"CARD_1\",\r\n            \"CardNumber\": \"7894-1234-1234\",\r\n            \"Expiration\": \"12/29\",\r\n            \"Cvv\": \"455\",\r\n            \"PaymentMethod\": 1\r\n        },\r\n        \"OrderItems\": [\r\n            {\r\n                \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n                \"Quantity\": 2,\r\n                \"Price\": 500\r\n            },\r\n            {\r\n                \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n                \"Quantity\": 1,\r\n                \"Price\": 500\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ordering_url}}/orders",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOrder",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Order\":\r\n    {\r\n        \"Id\": \"4e729645-4d23-42a2-a0e4-fa8805a0b0b2\",\r\n        \"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n        \"OrderName\": \"ORD_4\",\r\n        \"ShippingAddress\":\r\n        {\r\n            \"FirstName\": \"Valentina\",\r\n            \"LastName\": \"Gomez\",\r\n            \"EmailAddress\": \"valen@gmail.com\",\r\n            \"AddressLine\": \"St west 34\",\r\n            \"Country\": \"USA\",\r\n            \"State\": \"Texas\",\r\n            \"ZipCode\": \"45789\"\r\n        },\r\n        \"BillingAddress\":\r\n        {\r\n            \"FirstName\": \"Valentina\",\r\n            \"LastName\": \"Gomez\",\r\n            \"EmailAddress\": \"valen@gmail.com\",\r\n            \"AddressLine\": \"St west 34\",\r\n            \"Country\": \"USA\",\r\n            \"State\": \"Texas\",\r\n            \"ZipCode\": \"45789\"\r\n        },\r\n        \"Payment\" : \r\n        {\r\n            \"CardName\" : \"CARD_1\",\r\n            \"CardNumber\": \"7894-1234-1234\",\r\n            \"Expiration\": \"12/29\",\r\n            \"Cvv\": \"455\",\r\n            \"PaymentMethod\": 1\r\n        },\r\n        \"OrderItems\": [\r\n            {\r\n                \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n                \"Quantity\": 2,\r\n                \"Price\": 500\r\n            },\r\n            {\r\n                \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n                \"Quantity\": 1,\r\n                \"Price\": 500\r\n            }\r\n        ],\r\n        \"Status\": 2\r\n\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ordering_url}}/orders",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders?PageIndex=0&PageSize=2",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrdersByCustomerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders/customer/58c49479-ec65-4de2-86e7-033c546291aa",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders",
+								"customer",
+								"58c49479-ec65-4de2-86e7-033c546291aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrdersByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders/ORD_4",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders",
+								"ORD_4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrders",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/orders/3562510a-0d42-4b8a-8018-a038332e29f5",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"orders",
+								"3562510a-0d42-4b8a-8018-a038332e29f5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health Ordering.API",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ordering_url}}/health",
+							"host": [
+								"{{ordering_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "YarpApiGetaway",
+			"item": [
+				{
+					"name": "GetProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{yarp_url}}/catalog-service/products?pageNumber=1&pageSize=3",
+							"host": [
+								"{{yarp_url}}"
+							],
+							"path": [
+								"catalog-service",
+								"products"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{yarp_url}}/catalog-service/products/5334c996-8457-4cf0-815c-ed2b77c4ff61",
+							"host": [
+								"{{yarp_url}}"
+							],
+							"path": [
+								"catalog-service",
+								"products",
+								"5334c996-8457-4cf0-815c-ed2b77c4ff61"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddBasket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Cart\":\r\n    {\r\n        \"UserName\": \"jbot\",\r\n        \"Items\": [\r\n            {\r\n                \"Quantity\": 2,\r\n                \"Color\": \"Red\",\r\n                \"Price\": 500,\r\n                \"ProductId\": \"69bf74c7-efd5-4adc-a00b-2af19dd235fd\",\r\n                \"ProductName\": \"IPhone X\"\r\n            },\r\n            {\r\n                \"Quantity\": 1,\r\n                \"Color\": \"Green\",\r\n                \"Price\": 600,\r\n                \"ProductId\": \"56bf74c7-efd5-4adc-a00b-2af19dd235fd\",\r\n                \"ProductName\": \"Samsung 10\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{yarp_url}}/basket-service/basket",
+							"host": [
+								"{{yarp_url}}"
+							],
+							"path": [
+								"basket-service",
+								"basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckoutBasket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BasketCheckoutDto\" :\r\n    {\r\n        \"UserName\": \"jbot\",\r\n        \"CustomerId\": \"189dc8dc-990f-48e0-a37b-e6f2b60b9d7d\",\r\n        \"TotalPrice\": 0,\r\n        \"FirstName\": \"jbot\",\r\n        \"LastName\": \"jbot\",\r\n        \"EmailAddress\": \"swn4contact@gmail.com\",\r\n        \"AddressLine\": \"Cr 5 66l 33\",\r\n        \"Country\": \"USA\",\r\n        \"State\": \"Texas\",\r\n        \"ZipCode\": \"45678\",\r\n        \"CardName\": \"swn\",\r\n        \"CardNumber\": \"4567-44567-4567\",\r\n        \"Expiration\": \"11/30\",\r\n        \"Cvv\": \"333\",\r\n        \"PaymentMethod\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{yarp_url}}/basket-service/basket/checkout",
+							"host": [
+								"{{yarp_url}}"
+							],
+							"path": [
+								"basket-service",
+								"basket",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{yarp_url}}/ordering-service/orders?PageIndex=0&PageSize=10",
+							"host": [
+								"{{yarp_url}}"
+							],
+							"path": [
+								"ordering-service",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrdersByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{yarp_url}}/ordering-service/orders/mbotero",
+							"host": [
+								"{{yarp_url}}"
+							],
+							"path": [
+								"ordering-service",
+								"orders",
+								"mbotero"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
