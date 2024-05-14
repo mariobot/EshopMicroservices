@@ -8,6 +8,16 @@ builder.Services.AddRefitClient<ICatalogService>()
     {
         config.BaseAddress = new Uri(builder.Configuration["ApiSettings:GetawayAddress"]!);
     });
+builder.Services.AddRefitClient<IBasketService>()
+    .ConfigureHttpClient(config =>
+    {
+        config.BaseAddress = new Uri(builder.Configuration["ApiSettings:GetawayAddress"]!);
+    });
+builder.Services.AddRefitClient<IOrderingService>()
+    .ConfigureHttpClient(config =>
+    {
+        config.BaseAddress = new Uri(builder.Configuration["ApiSettings:GetawayAddress"]!);
+    });
 
 var app = builder.Build();
 

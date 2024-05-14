@@ -14,4 +14,11 @@
     <PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Pages\Confirmation.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
